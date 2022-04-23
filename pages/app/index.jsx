@@ -79,13 +79,13 @@ const Search = () => {
       .get("https://world.openfoodfacts.org/api/v2/search", {
         params: parameters,
       })
-      .then((response) => {
-        if (response.data.count === 0) {
+      .then(async (response) => {
+        if ((await response.data.count) === 0) {
           toast.error("We couldn't find the product. Please try again.");
           setResult({ productLoaded: false });
         } else {
           const productDetails = response.data.products[0];
-          const allergensRaw = productDetails.allergens_hierarchy;
+          const allergensRaw = await productDetails.allergens_hierarchy;
 
           const allergens = allergensRaw.map((element) => ({
             allergen: element.replace(/en:/, ""),
