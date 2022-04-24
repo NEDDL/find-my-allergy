@@ -164,11 +164,9 @@ const Search = () => {
           }}
         >
           <Typography
-            variant="h4"
+            variant="h2"
             sx={{
               mb: 6,
-              color: grey[800],
-              fontWeight: 400,
             }}
           >
             Find a product
@@ -191,9 +189,9 @@ const Search = () => {
                 }}
               >
                 {loading ? (
-                  <CircularProgress sx={{ p: 1, color: blueGrey[800] }} />
+                  <CircularProgress sx={{ p: 1 }} />
                 ) : (
-                  <QrCodeIcon sx={{ mx: 1, color: blueGrey[800] }} />
+                  <QrCodeIcon sx={{ mx: 1 }} />
                 )}
                 <Box
                   sx={{
@@ -209,8 +207,6 @@ const Search = () => {
                     value={code}
                     placeholder="Please enter the product barcode number"
                     sx={{
-                      backgroundColor: "white",
-                      color: grey[800],
                       px: 1,
                     }}
                   />
@@ -220,30 +216,17 @@ const Search = () => {
             <Grid item xs={3}>
               <Button
                 startIcon={<ArrowForwardIcon />}
-                disableRipple
+                variant="contained"
                 disabled={disabled}
                 onClick={handleSearch}
                 sx={{
                   width: "100%",
-                  cursor: "pointer",
-                  color: blueGrey[50],
-                  fontWeight: 400,
-                  fontSize: "1em",
-                  lineHeight: 2.5,
-                  textAlign: "left",
                   justifyContent: "flex-start",
-                  textTransform: "none",
-                  py: 0.5,
-                  px: 3,
                   height: 64,
+                  px: 4,
                   borderRadius: 0,
                   borderTopRightRadius: 5,
                   borderBottomRightRadius: 5,
-                  userSelect: "none",
-                  backgroundColor: blueGrey[800],
-                  "&:hover": {
-                    backgroundColor: blueGrey[900],
-                  },
                 }}
               >
                 Search
@@ -262,25 +245,18 @@ const Search = () => {
                 <Box
                   sx={{
                     borderBottom: 1,
-                    borderBottomColor: blueGrey[100],
+                    borderBottomColor: "grey.300",
                     px: 5,
                     py: 4,
                     borderTopLeftRadius: 5,
                     borderTopRightRadius: 5,
                   }}
                 >
-                  <Box justifyContent="space-between" sx={{ display: "flex" }}>
-                    <Typography
-                      variant="h4"
-                      sx={{
-                        color: grey[900],
-                        fontWeight: 700,
-                        textTransform: "lowercase",
-                        "&:first-letter": { textTransform: "uppercase" },
-                      }}
-                    >
-                      {result.productName}
-                    </Typography>
+                  <Box
+                    justifyContent="space-between"
+                    sx={{ display: "flex", mb: 1 }}
+                  >
+                    <Typography variant="h4">{result.productName}</Typography>
                     {fav ? (
                       <FavoriteIcon
                         onClick={handleFavorite}
@@ -312,26 +288,10 @@ const Search = () => {
                     )}
                   </Box>
                   <Box sx={{ display: "flex" }}>
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        color: blueGrey[400],
-                        fontWeight: 300,
-                        textTransform: "lowercase",
-                        "&:first-letter": { textTransform: "uppercase" },
-                      }}
-                    >
+                    <Typography variant="h6">
                       {result.productExplanation}
                     </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        color: blueGrey[400],
-                        fontWeight: 300,
-                        textTransform: "lowercase",
-                        "&:first-letter": { textTransform: "uppercase" },
-                      }}
-                    >
+                    <Typography variant="h6">
                       {result.productExplanation ? ", " : null}
                       {result.productCategory}
                     </Typography>
@@ -353,8 +313,6 @@ const Search = () => {
                       pb: 2,
                       borderBottom: 1,
                       borderBottomColor: blueGrey[50],
-                      color: grey[900],
-                      fontWeight: 400,
                     }}
                   >
                     Allergens
@@ -366,7 +324,7 @@ const Search = () => {
                       <>
                         <Box
                           sx={{
-                            backgroundColor: red[50],
+                            backgroundColor: "error.light",
                             display: "flex",
                             p: 2,
                             mb: 4,
@@ -377,8 +335,8 @@ const Search = () => {
                           <Typography
                             variant="body1"
                             sx={{
-                              color: red[900],
-                              fontWeight: 400,
+                              color: "error.main",
+                              fontWeight: "fontWeightRegular",
                             }}
                           >
                             We found allergens that matches with your
@@ -391,19 +349,21 @@ const Search = () => {
                     <>
                       <Box
                         sx={{
-                          backgroundColor: green[50],
+                          backgroundColor: "success.light",
                           display: "flex",
                           p: 2,
                           mb: 4,
                           borderRadius: 1,
                         }}
                       >
-                        <InfoIcon sx={{ ml: 2, mr: 1.5, color: green[900] }} />
+                        <InfoIcon
+                          sx={{ ml: 2, mr: 1.5, color: "success.main" }}
+                        />
                         <Typography
                           variant="body1"
                           sx={{
-                            color: green[900],
-                            fontWeight: 400,
+                            color: "success.main",
+                            fontWeight: "fontWeightRegular",
                           }}
                         >
                           We couldn&apos;t find any allergens that matches with
@@ -417,7 +377,7 @@ const Search = () => {
                     <>
                       <Box
                         sx={{
-                          backgroundColor: orange[50],
+                          backgroundColor: "warning.light",
                           display: "flex",
                           p: 2,
                           mb: 4,
@@ -428,8 +388,8 @@ const Search = () => {
                         <Typography
                           variant="body1"
                           sx={{
-                            color: orange[900],
-                            fontWeight: 400,
+                            color: "warning.main",
+                            fontWeight: "fontWeightRegular",
                           }}
                         >
                           The ingredients of this product are missing. So we
@@ -441,19 +401,21 @@ const Search = () => {
                     <>
                       <Box
                         sx={{
-                          backgroundColor: green[50],
+                          backgroundColor: "success.light",
                           display: "flex",
                           p: 2,
                           mb: 4,
                           borderRadius: 1,
                         }}
                       >
-                        <InfoIcon sx={{ ml: 2, mr: 1.5, color: green[900] }} />
+                        <InfoIcon
+                          sx={{ ml: 2, mr: 1.5, color: "success.main" }}
+                        />
                         <Typography
                           variant="body1"
                           sx={{
-                            color: green[900],
-                            fontWeight: 400,
+                            color: "success.main",
+                            fontWeight: "fontWeightRegular",
                           }}
                         >
                           We couldn&apos;t find any allergens for this product.
@@ -471,7 +433,7 @@ const Search = () => {
                           sx={{
                             textTransform: "capitalize",
                             backgroundColor: `${
-                              el.userAllergic ? red[50] : blueGrey[50]
+                              el.userAllergic ? "error.light" : "success.light"
                             }`,
                           }}
                         />
@@ -481,14 +443,12 @@ const Search = () => {
               </>
             ) : (
               <Box sx={{ display: "flex", px: 2, py: 4 }}>
-                <InfoIcon sx={{ mr: 2, color: grey[800] }} />
+                <InfoIcon sx={{ mr: 2, color: "text.primary" }} />
                 <Box>
                   <Typography
                     variant="body2"
                     sx={{
                       mb: 1,
-                      color: grey[800],
-                      fontWeight: 300,
                     }}
                   >
                     This application uses{" "}
@@ -496,7 +456,6 @@ const Search = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://world.openfoodfacts.org/"
-                      sx={{ color: blueGrey[800] }}
                     >
                       Open Food Facts API
                     </Link>{" "}
@@ -508,8 +467,6 @@ const Search = () => {
                     variant="body2"
                     sx={{
                       mb: 1,
-                      color: grey[800],
-                      fontWeight: 300,
                     }}
                   >
                     In addition to the allergens of products, it is also
@@ -521,8 +478,6 @@ const Search = () => {
                     variant="body2"
                     sx={{
                       mb: 4,
-                      color: grey[800],
-                      fontWeight: 300,
                     }}
                   >
                     As this application created for the purpose of a portfolio,
@@ -532,10 +487,9 @@ const Search = () => {
                   </Typography>
                   <Typography
                     variant="body2"
+                    color="text.secondary"
                     sx={{
                       mb: 1,
-                      color: grey[600],
-                      fontWeight: 300,
                     }}
                   >
                     All content on this app is created and published online for
@@ -543,13 +497,7 @@ const Search = () => {
                     substitute for professional medical advice and should not be
                     relied on as health or personal advice.
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: grey[600],
-                      fontWeight: 300,
-                    }}
-                  >
+                  <Typography variant="body2" color="text.secondary">
                     Always seek the guidance of your doctor or other qualified
                     health professional with any questions you may have
                     regarding your health or a medical condition. Never

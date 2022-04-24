@@ -16,20 +16,16 @@ import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import React from "react";
 import Link from "next/link";
+import baseOptions from "../../../../styles/theme/baseOptions";
+import darkTheme from "../../../../styles/theme/darkTheme";
 
 const SidebarMenu = (props) => {
-  const darkTheme = createTheme({
-    palette: {
-      mode: "dark",
-    },
-  });
-
   const content = [
     {
       title: "Search",
       icon: <SearchIcon />,
       link: "/app",
-      backgroundColor: green,
+      backgroundColor: green[400],
       button: true,
       separatorAfter: false,
     },
@@ -61,7 +57,7 @@ const SidebarMenu = (props) => {
 
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={createTheme(baseOptions, darkTheme)}>
         <Drawer
           sx={{
             width: 280,
@@ -94,33 +90,24 @@ const SidebarMenu = (props) => {
                   <a>
                     <Button
                       startIcon={el.icon}
-                      disableRipple
+                      variant="menuButtonDark"
+                      color="primary"
+                      to={el.link}
                       sx={{
-                        width: "80%",
-                        cursor: "pointer",
-                        color: blueGrey[50],
-                        fontWeight: 400,
-                        fontSize: "1em",
-                        lineHeight: 2.5,
-                        textAlign: "left",
-                        justifyContent: "flex-start",
-                        textTransform: "none",
-                        textDecoration: "none",
                         my: 0.5,
                         mx: 3,
                         py: 0.5,
                         px: 3,
-                        borderRadius: 1,
-                        userSelect: "none",
-                        backgroundColor: null,
-                        "&:hover": {
-                          backgroundColor: blueGrey[800],
-                        },
+
                         ...(el.button && {
-                          backgroundColor: green[700],
+                          backgroundColor: green[500],
+                          fontWeight: 600,
                           mb: 3,
-                          "&:hover": {
+                          "&:focus": {
                             backgroundColor: green[500],
+                          },
+                          "&:hover": {
+                            backgroundColor: green[700],
                           },
                         }),
                       }}

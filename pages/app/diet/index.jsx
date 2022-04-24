@@ -59,7 +59,7 @@ const Diet = () => {
     "lupin",
   ];
 
-  const ITEM_HEIGHT = 48;
+  const ITEM_HEIGHT = 54;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
     PaperProps: {
@@ -70,14 +70,14 @@ const Diet = () => {
     },
   };
 
-  function getStyles(name, selectedAllergen, theme) {
+  const getStyles = (name, selectedAllergen, theme) => {
     return {
       fontWeight:
         selectedAllergen.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
+          ? theme.typography.fontWeightLight
+          : theme.typography.fontWeightRegular,
     };
-  }
+  };
 
   const handleChange = (event) => {
     const {
@@ -105,11 +105,9 @@ const Diet = () => {
           }}
         >
           <Typography
-            variant="h4"
+            variant="h2"
             sx={{
               mb: 6,
-              color: grey[800],
-              fontWeight: 400,
             }}
           >
             My diet
@@ -188,8 +186,6 @@ const Diet = () => {
                     variant="body2"
                     sx={{
                       mb: 1,
-                      color: grey[800],
-                      fontWeight: 300,
                     }}
                   >
                     The allergen list provided above is generated automatically
@@ -198,7 +194,6 @@ const Diet = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://world.openfoodfacts.org/"
-                      sx={{ color: blueGrey[800] }}
                     >
                       Open Food Facts API
                     </Link>
@@ -208,8 +203,6 @@ const Diet = () => {
                     variant="body2"
                     sx={{
                       mb: 4,
-                      color: grey[800],
-                      fontWeight: 300,
                     }}
                   >
                     The allergen categories that have less than 100 products in
@@ -218,10 +211,9 @@ const Diet = () => {
                   </Typography>
                   <Typography
                     variant="body2"
+                    color="text.secondary"
                     sx={{
                       mb: 1,
-                      color: grey[600],
-                      fontWeight: 300,
                     }}
                   >
                     All content on this app is created and published online for
@@ -229,13 +221,7 @@ const Diet = () => {
                     substitute for professional medical advice and should not be
                     relied on as health or personal advice.
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: grey[600],
-                      fontWeight: 300,
-                    }}
-                  >
+                  <Typography variant="body2" color="text.secondary">
                     Always seek the guidance of your doctor or other qualified
                     health professional with any questions you may have
                     regarding your health or a medical condition. Never
@@ -249,13 +235,12 @@ const Diet = () => {
                 <Grid item>
                   <Button
                     variant="text"
+                    color="error"
                     disableElevation
                     onClick={handleDiscard}
                     sx={{
                       ml: "auto",
                       mr: 0,
-                      color: red[800],
-                      "&:hover": { backgroundColor: red[50] },
                     }}
                   >
                     Discard changes
@@ -264,13 +249,12 @@ const Diet = () => {
                 <Grid item>
                   <Button
                     variant="contained"
+                    color="primary"
                     disableElevation
                     onClick={handleSave}
                     sx={{
-                      backgroundColor: blueGrey[800],
                       ml: "auto",
                       mr: 0,
-                      "&:hover": { backgroundColor: blueGrey[700] },
                     }}
                   >
                     Save changes

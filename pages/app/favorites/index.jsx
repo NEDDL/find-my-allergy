@@ -15,7 +15,7 @@ import {
 } from "../../../src/store/userSlice";
 import { useSelector, useDispatch } from "../../../src/store/configureStore";
 
-import { blueGrey, grey, green, orange, red } from "@mui/material/colors";
+import { blueGrey, grey, red } from "@mui/material/colors";
 import {
   Box,
   Button,
@@ -142,11 +142,9 @@ const Favorites = () => {
           }}
         >
           <Typography
-            variant="h4"
+            variant="h2"
             sx={{
               pb: 6,
-              color: grey[800],
-              fontWeight: 400,
             }}
           >
             Favorites
@@ -159,33 +157,50 @@ const Favorites = () => {
             borderRadius: 1,
           }}
         >
-          <TableContainer>
+          <TableContainer sx={{ pt: 2 }}>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Barcode</TableCell>
-                  <TableCell width="40%">Product</TableCell>
-                  <TableCell>Allergens</TableCell>
-                  <TableCell align="right" />
+                  <TableCell>
+                    <Typography variant="tableHeader">Barcode</Typography>
+                  </TableCell>
+                  <TableCell width="40%">
+                    <Typography variant="tableHeader">Product</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="tableHeader">Allergens</Typography>
+                  </TableCell>
+                  <TableCell />
                 </TableRow>
               </TableHead>
               <TableBody>
                 {result.map((favorite) => {
                   return (
-                    <TableRow hover key={favorite.productId}>
+                    <TableRow
+                      hover
+                      key={favorite.productId}
+                      sx={{
+                        "&.MuiTableRow-root:hover": {
+                          backgroundColor: "#FBFBFB",
+                        },
+                      }}
+                    >
                       <TableCell>
-                        <Typography variant="subtitle2">
+                        <Typography variant="subtitle1">
                           {favorite.productId}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography variant="subtitle2">
+                        <Typography variant="subtitle1">
                           {favorite.productName}
                         </Typography>
                         <Typography variant="subtitle2">
-                          {favorite.productExplanation +
-                            ", " +
-                            favorite.productCategory}
+                          {favorite.productExplanation
+                            ? favorite.productExplanation
+                            : !favorite.productCategory &&
+                              "category not defined"}
+                          {favorite.productExplanation && ", "}
+                          {favorite.productCategory}
                         </Typography>
                       </TableCell>
                       <TableCell>
@@ -197,11 +212,9 @@ const Favorites = () => {
                                 label={allergen.allergen}
                                 size="small"
                                 sx={{
-                                  textTransform: "capitalize",
-
                                   backgroundColor: `${
                                     allergen.userAllergic
-                                      ? red[50]
+                                      ? "error.light"
                                       : blueGrey[50]
                                   }`,
                                 }}
