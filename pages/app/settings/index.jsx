@@ -16,54 +16,45 @@ import {
 import { useSelector, useDispatch } from "../../../src/store/configureStore";
 
 import { blueGrey, grey, red } from "@mui/material/colors";
-import {
-  Box,
-  Button,
-  Chip,
-  CircularProgress,
-  Container,
-  Grid,
-  Input,
-  Stack,
-  Typography,
-  Link,
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-} from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
+import UserDetails from "../../../src/components/appComponents/settings/userDetails";
+import EmailAddress from "../../../src/components/appComponents/settings/emailAddress";
+import Password from "../../../src/components/appComponents/settings/password";
 
 const Settings = () => {
+  useEffect(() => {
+    dispatch(loadUser());
+  });
+
   return (
-    <>
-      <Container maxWidth="md" sx={{ p: 5 }}>
-        <Box
-          component="main"
+    <Container maxWidth="md" sx={{ p: 5 }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          pt: 8,
+        }}
+      >
+        <Typography
+          variant="h2"
           sx={{
-            flexGrow: 1,
-            pt: 8,
+            pb: 6,
           }}
         >
-          <Typography
-            variant="h2"
-            sx={{
-              pb: 6,
-            }}
-          >
-            Settings
-          </Typography>
-        </Box>
-      </Container>
-    </>
+          Settings
+        </Typography>
+      </Box>
+      <UserDetails />
+      <EmailAddress />
+      <Password />
+    </Container>
   );
 };
 
 Settings.getLayout = (page) => {
   return (
     <>
-      <AppLayout>{page}</AppLayout>;
+      <AppLayout>{page}</AppLayout>
     </>
   );
 };
