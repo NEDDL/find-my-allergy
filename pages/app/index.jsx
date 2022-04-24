@@ -518,7 +518,7 @@ const Search = () => {
 Search.getLayout = (page) => {
   return (
     <>
-      <AppLayout>{page}</AppLayout>;
+      <AppLayout>{page}</AppLayout>
     </>
   );
 };

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AppLayout from "../../../src/components/appLayout";
 
 // Redux
-import { addAllergens } from "../../../src/store/userSlice";
+import { addAllergens, loadUser } from "../../../src/store/userSlice";
 import { useSelector, useDispatch } from "../../../src/store/configureStore";
 
 // Styling
@@ -29,17 +29,19 @@ const Diet = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.entities.user);
-  const [selectedAllergen, setSelectedAllergen] = useState(
-    userData.allergens || []
-  );
+  const [loaded, setLoaded] = useState(false);
+  const [selectedAllergen, setSelectedAllergen] = useState([]);
 
-  const test = {
-    data: {
-      name: "",
-      lastName: "",
-    },
-    allergens: [],
-    favorites: [],
+  useEffect(() => {
+    dispatch(loadUser());
+  });
+
+  useEffect(() => {
+    userAllergens();
+  }, [userData]);
+
+  const userAllergens = () => {
+    setSelectedAllergen(userData.allergens);
   };
 
   const Categories = [
@@ -272,7 +274,7 @@ const Diet = () => {
 Diet.getLayout = (page) => {
   return (
     <>
-      <AppLayout>{page}</AppLayout>;
+      <AppLayout>{page}</AppLayout>
     </>
   );
 };

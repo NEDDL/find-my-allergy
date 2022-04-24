@@ -269,7 +269,7 @@ const Favorites = () => {
 Favorites.getLayout = (page) => {
   return (
     <>
-      <AppLayout>{page}</AppLayout>;
+      <AppLayout>{page}</AppLayout>
     </>
   );
 };

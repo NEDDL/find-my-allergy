@@ -5,28 +5,27 @@ import AppToolbar from "./appComponents/toolbar/toolbar";
 
 const AppLayout = ({ children }) => {
   return (
-    <>
+    <Box
+      sx={{
+        display: "flex",
+      }}
+    >
+      <SidebarMenu />
       <Box
         sx={{
           display: "flex",
+          flex: "1 1 auto",
+          flexDirection: "column",
+          width: "100%",
+          backgroundColor: "#f2f2f2",
+          minHeight: "100vh",
+          mb: 0,
         }}
       >
-        <SidebarMenu />
-        <Box
-          sx={{
-            display: "flex",
-            flex: "1 1 auto",
-            flexDirection: "column",
-            width: "100%",
-            backgroundColor: "#f2f2f2",
-            minHeight: "100vh",
-          }}
-        >
-          <AppToolbar />
-          {children}
-        </Box>
+        <AppToolbar />
+        {children}
       </Box>
-    </>
+    </Box>
   );
 };
 
