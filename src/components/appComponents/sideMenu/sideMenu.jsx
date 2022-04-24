@@ -92,7 +92,6 @@ const SidebarMenu = (props) => {
                       startIcon={el.icon}
                       variant="menuButtonDark"
                       color="primary"
-                      to={el.link}
                       sx={{
                         my: 0.5,
                         mx: 3,
