@@ -9,7 +9,10 @@ import { firestore } from "./middleware/firestore";
 export default function store() {
   return configureStore({
     reducer,
-    middleware: [firestore],
+    middleware: (getDefaultMiddleware) => [
+      ...getDefaultMiddleware(),
+      firestore,
+    ],
   });
 }
 

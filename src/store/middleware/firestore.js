@@ -47,10 +47,6 @@ export const firestore =
       }
     }
     if (method === "get") {
-      const diffInMinutes = moment().diff(moment(lastFetch), "minutes")
-      if (diffInMinutes < 10) {
-        dispatch(actions.firestoreReadFromCached("Last fetched: " + moment(lastFetch).startOf('minutes').fromNow()))
-      } else {
       try{
         const userData = await db.getUser(userId);
         dispatch(actions.firestoreCallSuccess("Call performed successfully"));
@@ -58,8 +54,5 @@ export const firestore =
       } catch (err) {
         dispatch({ type: onError, payload: err.message });
       }
-      }
     }
-
-    
   };

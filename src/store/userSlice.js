@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as actions from "./firestore";
+import moment from "moment";
 
 const slice = createSlice({
   name: "user",
@@ -30,6 +31,9 @@ const slice = createSlice({
     },
     dataLoadRequested: (state) => {
       state.loading = true;
+    },
+    dataLoadedFromCache: (state) => {
+      state.loading = false;
     },
     dataUploadRequested: (state) => {
       state.uploading = true;
@@ -84,13 +88,20 @@ export const {
 
 export default slice.reducer;
 
-export const loadUser = () =>
-  actions.firestoreCallBegan({
-    onStart: "user/dataLoadRequested",
-    onSuccess: "user/dataLoaded",
-    onError: actions.firestoreCallFailed.type,
-    method: "get",
-  });
+export const loadUser = () => (dispatch, getState) => {
+  const { lastFetch } = getState().entities.user;
+  const diffInMinutes = moment().diff(moment(lastFetch), "minutes");
+  if (diffInMinutes < 10) return;
+
+  dispatch(
+    actions.firestoreCallBegan({
+      onStart: "user/dataLoadRequested",
+      onSuccess: "user/dataLoaded",
+      onError: actions.firestoreCallFailed.type,
+      method: "get",
+    })
+  );
+};
 
 export const addAllergens = (payload) =>
   actions.firestoreCallBegan({
