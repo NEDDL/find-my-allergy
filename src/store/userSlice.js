@@ -78,7 +78,7 @@ const slice = createSlice({
   },
 });
 
-export const {
+const {
   userUpdated,
   allergensUpdated,
   favoriteAdded,
