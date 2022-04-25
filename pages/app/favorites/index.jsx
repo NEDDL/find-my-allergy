@@ -53,7 +53,7 @@ const Favorites = () => {
   });
   useEffect(() => {
     dispatch(loadUser());
-  }, []);
+  }, [dispatch]);
 
   const loadFavorites = async () => {
     userData.favorites.map(async (el) => {

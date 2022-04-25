@@ -38,12 +38,11 @@ const Diet = () => {
   });
 
   useEffect(() => {
+    const userAllergens = () => {
+      setSelectedAllergen(userData.allergens);
+    };
     userAllergens();
   }, [userData]);
-
-  const userAllergens = () => {
-    setSelectedAllergen(userData.allergens);
-  };
 
   const Categories = [
     "milk",
