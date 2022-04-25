@@ -33,6 +33,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import InfoIcon from "@mui/icons-material/Info";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Head from "next/head";
 
 const Search = () => {
   const router = useRouter();
@@ -155,6 +156,10 @@ const Search = () => {
 
   return (
     <>
+      <Head>
+        <title>Find my allergy | Search</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Container maxWidth="md" sx={{ p: 5 }}>
         <Box
           component="main"
