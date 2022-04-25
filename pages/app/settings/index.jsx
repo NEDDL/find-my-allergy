@@ -6,7 +6,6 @@ import React, {
   useRef,
 } from "react";
 import AppLayout from "../../../src/components/appLayout";
-import axios from "axios";
 
 import {
   loadUser,
@@ -20,34 +19,44 @@ import { Box, Container, Typography } from "@mui/material";
 import UserDetails from "../../../src/components/appComponents/settings/userDetails";
 import EmailAddress from "../../../src/components/appComponents/settings/emailAddress";
 import Password from "../../../src/components/appComponents/settings/password";
+import Head from "next/head";
 
 const Settings = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.entities.user);
+
   useEffect(() => {
     dispatch(loadUser());
   });
 
   return (
-    <Container maxWidth="md" sx={{ p: 5 }}>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          pt: 8,
-        }}
-      >
-        <Typography
-          variant="h2"
+    <>
+      <Head>
+        <title>Find my allergy | Settings</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Container maxWidth="md" sx={{ p: 5 }}>
+        <Box
+          component="main"
           sx={{
-            pb: 6,
+            flexGrow: 1,
+            pt: 8,
           }}
         >
-          Settings
-        </Typography>
-      </Box>
-      <UserDetails />
-      <EmailAddress />
-      <Password />
-    </Container>
+          <Typography
+            variant="h2"
+            sx={{
+              pb: 6,
+            }}
+          >
+            Settings
+          </Typography>
+        </Box>
+        <UserDetails />
+        <EmailAddress />
+        <Password />
+      </Container>
+    </>
   );
 };
 

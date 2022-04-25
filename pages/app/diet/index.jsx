@@ -24,6 +24,7 @@ import {
 } from "@mui/material";
 // Icons
 import InfoIcon from "@mui/icons-material/Info";
+import Head from "next/head";
 
 const Diet = () => {
   const theme = useTheme();
@@ -98,6 +99,10 @@ const Diet = () => {
 
   return (
     <>
+      <Head>
+        <title>Find my allergy | My diet</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Container maxWidth="md" sx={{ p: 5 }}>
         <Box
           component="main"

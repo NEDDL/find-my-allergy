@@ -36,6 +36,7 @@ import {
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Head from "next/head";
 
 const Favorites = () => {
   const dispatch = useDispatch();
@@ -133,6 +134,10 @@ const Favorites = () => {
 
   return (
     <>
+      <Head>
+        <title>Find my allergy | Favorites</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Container maxWidth="md" sx={{ p: 5 }}>
         <Box
           component="main"
