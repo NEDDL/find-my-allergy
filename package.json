@@ -1,5 +1,6 @@
 {
   "name": "allergy-app",
+  "author": "Mustafa ONAL",
   "version": "0.1.0",
   "private": true,
   "scripts": {
