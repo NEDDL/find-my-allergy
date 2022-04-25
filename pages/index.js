@@ -1,3 +1,5 @@
+import React from "react";
+import NextLink from "next/link";
 import {
   Avatar,
   Box,
@@ -6,7 +8,7 @@ import {
   CssBaseline,
   FormControlLabel,
   Grid,
-  Link,
+  Link as MUILink,
   TextField,
   Typography,
   Paper,
@@ -109,14 +111,16 @@ export default function Home() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
+                  <NextLink href="/authentication/password-recovery" passHref>
+                    <MUILink variant="body2">Forgot password?</MUILink>
+                  </NextLink>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
+                  <NextLink href="/authentication/sign-up" passHref>
+                    <MUILink variant="body2">
+                      {"Don't have an account? Sign Up"}
+                    </MUILink>
+                  </NextLink>
                 </Grid>
               </Grid>
             </Box>
