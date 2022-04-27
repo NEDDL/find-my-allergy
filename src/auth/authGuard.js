@@ -1,14 +1,15 @@
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
 const AuthGuard = ({ children }) => {
   const auth = useAuth();
   const router = useRouter();
-
+  const [checked, setChecked] = useState(false);
+  console.log(auth);
   useEffect(() => {
     Guard();
-  }, [router.isReady]);
+  }, []);
 
   function Guard(children) {
     if (!auth.isAuthenticated) {
@@ -20,6 +21,8 @@ const AuthGuard = ({ children }) => {
           })
           .catch(console.error);
       }
+    } else {
+      setChecked(true);
     }
   }
   return <>{children}</>;
