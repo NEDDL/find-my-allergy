@@ -50,7 +50,7 @@ const Home = () => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        await dispatch(signIn(values));
+        auth.signIn(values.email, values.password);
         const returnUrl = router.query.returnUrl || "/app";
         router.push(returnUrl).catch(console.error);
       } catch (err) {
