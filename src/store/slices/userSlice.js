@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import * as actions from "./firestore";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import * as actions from "../actions/firestoreActions";
 import moment from "moment";
 
 const slice = createSlice({

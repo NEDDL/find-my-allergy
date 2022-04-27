@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import AppLayout from "../../../src/components/appLayout";
 
 // Redux
-import { addAllergens, loadUser } from "../../../src/store/userSlice";
+
+import { addAllergens, loadUser } from "../../../src/store/slices/userSlice";
 import { useSelector, useDispatch } from "../../../src/store/configureStore";
 
 // Styling

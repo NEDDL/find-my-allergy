@@ -3,8 +3,9 @@ import {
   useSelector as useReduxSelector,
 } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import reducer from "./reducer";
+import reducer from "./reducers/reducer";
 import { firestore } from "./middleware/firestore";
+import { auth } from "./middleware/auth";
 
 export default function store() {
   return configureStore({
@@ -12,6 +13,7 @@ export default function store() {
     middleware: (getDefaultMiddleware) => [
       ...getDefaultMiddleware(),
       firestore,
+      auth,
     ],
   });
 }

@@ -12,7 +12,7 @@ import {
   loadUser,
   addFavorite,
   removeFavorite,
-} from "../../../src/store/userSlice";
+} from "../../../src/store/slices/userSlice";
 import { useSelector, useDispatch } from "../../../src/store/configureStore";
 
 import { blueGrey, grey, red } from "@mui/material/colors";

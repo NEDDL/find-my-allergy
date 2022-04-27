@@ -10,7 +10,8 @@ import {
   addFavorite,
   removeFavorite,
   loadUser,
-} from "../../src/store/userSlice";
+} from "../../src/store/slices/userSlice";
+import { authenticateUser } from "../../src/store/slices/authSlice";
 import { useSelector, useDispatch } from "../../src/store/configureStore";
 
 // Styling
@@ -34,6 +35,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Head from "next/head";
+import AuthGuard from "../../src/auth/authGuard";
 
 const Search = () => {
   const router = useRouter();
@@ -160,6 +162,7 @@ const Search = () => {
         <title>Find my allergy | Search</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Container maxWidth="md" sx={{ p: 5 }}>
         <Box
           component="main"
@@ -520,12 +523,14 @@ const Search = () => {
   );
 };
 
+export default Search;
+
 Search.getLayout = (page) => {
   return (
     <>
-      <AppLayout>{page}</AppLayout>
+      <AuthGuard>
+        <AppLayout>{page}</AppLayout>
+      </AuthGuard>
     </>
   );
 };
-
-export default Search;

@@ -1,4 +1,4 @@
-import * as actions from "../firestore";
+import * as actions from "../actions/firestoreActions";
 import * as db from "../../database/services/userService";
 import moment from "moment"
 

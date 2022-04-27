@@ -12,20 +12,25 @@ import lightTheme from "../styles/theme/lightTheme";
 import baseOptions from "../styles/theme/baseOptions";
 
 import { Toaster } from "react-hot-toast";
+import { AuthProvider } from "../src/contexts/authContext";
+
+const AppWrapper = () => {};
 
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout ?? ((page) => page);
   const router = useRouter();
 
-  return getLayout(
+  return (
     <Fragment>
-      <ThemeProvider theme={createTheme(baseOptions, lightTheme)}>
-        <GlobalStyle />
-        <Provider store={store}>
-          <Toaster />
-          <Component {...pageProps} key={router.asPath} />
-        </Provider>
-      </ThemeProvider>
+      <Provider store={store}>
+        <AuthProvider>
+          <ThemeProvider theme={createTheme(baseOptions, lightTheme)}>
+            <GlobalStyle />
+            <Toaster />
+            {getLayout(<Component {...pageProps} key={router.asPath} />)}
+          </ThemeProvider>
+        </AuthProvider>
+      </Provider>
     </Fragment>
   );
 }

@@ -1,10 +1,11 @@
-import { db } from "../configureFirebase";
+import db from "../configureFirestore";
 
 import {
   collection,
   getDocs,
   getDoc,
   addDoc,
+  setDoc,
   updateDoc,
   deleteDoc,
   doc,
@@ -17,9 +18,9 @@ import {
 
 const usersCollectionRef = collection(db, "users");
 
-export const createUser = async () => {
-  const data = { name: "mustafa", lastName: "onal" };
-  const docRef = await addDoc(usersCollectionRef, data);
+export const createUser = async (userId, payload) => {
+  const userDoc = doc(db, "users", userId);
+  return await setDoc(userDoc, payload);
 };
 
 export const getUser = async (userId) => {
