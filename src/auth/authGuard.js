@@ -6,7 +6,7 @@ const AuthGuard = ({ children }) => {
   const auth = useAuth();
   const router = useRouter();
   const [checked, setChecked] = useState(false);
-  console.log(auth);
+
   useEffect(() => {
     Guard();
   }, [router.isReady, auth]);
