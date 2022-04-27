@@ -24,7 +24,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import { signIn } from "../src/store/slices/authSlice";
 import { useSelector, useDispatch } from "../src/store/configureStore";
 
 import { useAuth } from "../src/hooks/useAuth";

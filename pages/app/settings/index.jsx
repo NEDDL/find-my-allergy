@@ -7,11 +7,7 @@ import React, {
 } from "react";
 import AppLayout from "../../../src/components/appLayout";
 
-import {
-  loadUser,
-  addFavorite,
-  removeFavorite,
-} from "../../../src/store/userSlice";
+import { loadUser } from "../../../src/store/slices/userSlice";
 import { useSelector, useDispatch } from "../../../src/store/configureStore";
 
 import { blueGrey, grey, red } from "@mui/material/colors";
