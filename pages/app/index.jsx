@@ -11,7 +11,6 @@ import {
   removeFavorite,
   loadUser,
 } from "../../src/store/slices/userSlice";
-import { authenticateUser } from "../../src/store/slices/authSlice";
 import { useSelector, useDispatch } from "../../src/store/configureStore";
 
 // Styling
