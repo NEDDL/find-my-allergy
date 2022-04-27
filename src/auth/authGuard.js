@@ -9,18 +9,16 @@ const AuthGuard = ({ children }) => {
   console.log(auth);
   useEffect(() => {
     Guard();
-  }, []);
+  }, [router.isReady, auth]);
 
   function Guard(children) {
     if (!auth.isAuthenticated) {
-      if (router.isReady) {
-        router
-          .push({
-            pathname: "/",
-            query: { returnUrl: router.asPath },
-          })
-          .catch(console.error);
-      }
+      router
+        .push({
+          pathname: "/",
+          query: { returnUrl: router.asPath },
+        })
+        .catch(console.error);
     } else {
       setChecked(true);
     }
