@@ -11,7 +11,7 @@ const AuthGuard = ({ children }) => {
   }, [router.isReady]);
 
   function Guard(children) {
-    if (!auth.isAuthenticated) {
+    if (auth.isAuthenticated) {
       console.log(auth.isAuthenticated);
       router.push("/app").catch(console.error);
     }
