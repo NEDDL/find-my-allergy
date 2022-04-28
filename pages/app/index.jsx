@@ -58,7 +58,6 @@ const Search = () => {
 
   useEffect(() => {
     if (router.isReady && router.query.code) {
-      apiCall(router.query.code);
       setCode(router.query.code);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
