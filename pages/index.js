@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 
 import {
   Avatar,
@@ -50,7 +51,7 @@ const Home = () => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        auth.signIn(values.email, values.password);
+        await auth.signIn(values.email, values.password);
         const returnUrl = router.query.returnUrl || "/app";
         router.push(returnUrl).catch(console.error);
       } catch (err) {

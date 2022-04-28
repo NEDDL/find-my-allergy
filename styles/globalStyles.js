@@ -18,11 +18,13 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     min-height: 100%;
     width: 100%;
+    
   }
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
   }
   a {
     color: inherit;

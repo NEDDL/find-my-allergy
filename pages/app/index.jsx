@@ -61,6 +61,7 @@ const Search = () => {
       apiCall(router.query.code);
       setCode(router.query.code);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
   useEffect(() => {
