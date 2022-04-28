@@ -21,6 +21,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { useAuth } from "../../src/hooks/useAuth";
+import GuestGuard from "../../src/auth/guestGuard";
 
 const SignUp = () => {
   const auth = useAuth();
@@ -122,6 +123,14 @@ const SignUp = () => {
         </Box>
       </Box>
     </Container>
+  );
+};
+
+SignUp.getLayout = (page) => {
+  return (
+    <>
+      <GuestGuard>{page}</GuestGuard>
+    </>
   );
 };
 

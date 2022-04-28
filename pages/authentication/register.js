@@ -24,6 +24,7 @@ import * as Yup from "yup";
 
 import { createUser as newUser } from "../../src/database/services/userService";
 import { useAuth } from "../../src/hooks/useAuth";
+import GuestGuard from "../../src/auth/guestGuard";
 
 const Register = () => {
   const auth = useAuth();
@@ -232,6 +233,14 @@ const Register = () => {
         </Box>
       </Box>
     </Container>
+  );
+};
+
+Register.getLayout = (page) => {
+  return (
+    <>
+      <GuestGuard>{page}</GuestGuard>
+    </>
   );
 };
 
