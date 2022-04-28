@@ -2,21 +2,23 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 import * as actions from "../actions/firestoreActions";
 import moment from "moment";
 
+const initialState = {
+  userId: "",
+  user: {
+    name: "",
+    lastName: "",
+  },
+  allergens: [],
+  favorites: [],
+  lastSearched: [],
+  loading: false,
+  uploading: false,
+  lastFetch: null,
+};
+
 const slice = createSlice({
   name: "user",
-  initialState: {
-    userId: "",
-    user: {
-      name: "",
-      lastName: "",
-    },
-    allergens: [],
-    favorites: [],
-    lastSearched: [],
-    loading: false,
-    uploading: false,
-    lastFetch: null,
-  },
+  initialState: initialState,
   reducers: {
     idFetched: (state, action) => {
       state.userId = action.payload;
@@ -77,6 +79,9 @@ const slice = createSlice({
         ),
       };
     },
+    initialStateRequested: (state) => {
+      return initialState;
+    },
   },
 });
 
@@ -87,6 +92,7 @@ const {
   favoriteAdded,
   favoriteDeleted,
   lastSearchedAdded,
+  initialStateRequested,
 } = slice.actions;
 
 export default slice.reducer;
@@ -152,3 +158,5 @@ export const updateUserDetails = (payload) =>
     method: "updateUser",
     data: payload,
   });
+
+export const logoutRedux = () => initialStateRequested();

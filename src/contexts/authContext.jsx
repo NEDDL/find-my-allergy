@@ -12,7 +12,7 @@ import {
 } from "firebase/auth";
 
 // Redux
-import { fetchId } from "../../src/store/slices/userSlice";
+import { fetchId, logoutRedux } from "../../src/store/slices/userSlice";
 import { useSelector, useDispatch } from "../../src/store/configureStore";
 
 export const AuthContext = createContext({
@@ -64,6 +64,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     await signOut(auth);
+    dispatch(logoutRedux());
     router.push("/");
   };
 
