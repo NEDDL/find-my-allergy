@@ -2,13 +2,14 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
-const AuthGuard = ({ children }) => {
+const GuestGuard = ({ children }) => {
   const auth = useAuth();
   const router = useRouter();
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     Guard();
+    //eslint-disable-next-line
   }, [router.isReady, auth]);
 
   function Guard(children) {
@@ -21,4 +22,4 @@ const AuthGuard = ({ children }) => {
   return <>{children}</>;
 };
 
-export default AuthGuard;
+export default GuestGuard;
