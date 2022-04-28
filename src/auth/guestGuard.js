@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import SplashScreen from "../components/appComponents/splashScreen/splashScreen";
 import { useAuth } from "../hooks/useAuth";
 
 const GuestGuard = ({ children }) => {
@@ -19,7 +20,7 @@ const GuestGuard = ({ children }) => {
       setChecked(true);
     }
   }
-  return <>{children}</>;
+  return !auth.isAuthenticated ? <>{children}</> : <SplashScreen />;
 };
 
 export default GuestGuard;
