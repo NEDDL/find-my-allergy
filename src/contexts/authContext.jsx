@@ -45,6 +45,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(false);
         setUser([]);
         setIsInitialized(true);
+        dispatch(logoutRedux());
       }
     });
   }, []);
