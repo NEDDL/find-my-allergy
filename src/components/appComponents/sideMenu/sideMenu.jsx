@@ -19,7 +19,7 @@ import Link from "next/link";
 import baseOptions from "../../../../styles/theme/baseOptions";
 import darkTheme from "../../../../styles/theme/darkTheme";
 
-const SidebarMenu = (props) => {
+const SidebarMenu = ({ showMenu, drawerWidth }) => {
   const content = [
     {
       title: "Search",
@@ -60,18 +60,18 @@ const SidebarMenu = (props) => {
       <ThemeProvider theme={createTheme(baseOptions, darkTheme)}>
         <Drawer
           sx={{
-            width: 280,
+            width: drawerWidth,
             flexShrink: 0,
             "& .MuiDrawer-paper": {
-              width: 280,
+              width: drawerWidth,
               boxSizing: "border-box",
               backgroundColor: blueGrey[900],
               borderRightColor: "divider",
               borderRightStyle: "solid",
             },
           }}
-          open
-          variant="permanent"
+          open={showMenu}
+          variant="persistent"
           anchor="left"
         >
           <Box
