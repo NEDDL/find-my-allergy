@@ -17,9 +17,13 @@ import EmailAddress from "../../../src/components/appComponents/settings/emailAd
 import Password from "../../../src/components/appComponents/settings/password";
 import Head from "next/head";
 
+import { useAuth } from "../../../src/hooks/useAuth";
+import AuthGuard from "../../../src/auth/authGuard";
+
 const Settings = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.entities.user);
+  const auth = useAuth();
 
   useEffect(() => {
     dispatch(loadUser());
@@ -59,7 +63,9 @@ const Settings = () => {
 Settings.getLayout = (page) => {
   return (
     <>
-      <AppLayout>{page}</AppLayout>
+      <AuthGuard>
+        <AppLayout>{page}</AppLayout>
+      </AuthGuard>
     </>
   );
 };

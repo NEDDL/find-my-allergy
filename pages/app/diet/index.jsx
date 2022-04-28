@@ -26,6 +26,7 @@ import {
 // Icons
 import InfoIcon from "@mui/icons-material/Info";
 import Head from "next/head";
+import AuthGuard from "../../../src/auth/authGuard";
 
 const Diet = () => {
   const theme = useTheme();
@@ -279,7 +280,9 @@ const Diet = () => {
 Diet.getLayout = (page) => {
   return (
     <>
-      <AppLayout>{page}</AppLayout>
+      <AuthGuard>
+        <AppLayout>{page}</AppLayout>
+      </AuthGuard>
     </>
   );
 };

@@ -38,6 +38,8 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Head from "next/head";
 
+import AuthGuard from "../../../src/auth/authGuard";
+
 const Favorites = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.entities.user);
@@ -274,7 +276,9 @@ const Favorites = () => {
 Favorites.getLayout = (page) => {
   return (
     <>
-      <AppLayout>{page}</AppLayout>
+      <AuthGuard>
+        <AppLayout>{page}</AppLayout>
+      </AuthGuard>
     </>
   );
 };
