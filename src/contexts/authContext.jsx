@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from "react";
+import { useRouter } from "next/router";
 import auth from "../auth/configureAuth";
 import {
   createUserWithEmailAndPassword,
@@ -6,6 +7,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   sendPasswordResetEmail,
+  updateEmail as _updateEmail,
+  updatePassword as _updatePassword,
 } from "firebase/auth";
 
 // Redux
@@ -20,9 +23,12 @@ export const AuthContext = createContext({
   logout: () => {},
   resetPassword: () => {},
   createUser: () => {},
+  updateEmail: () => {},
+  updatePassword: () => {},
 });
 
 export const AuthProvider = ({ children }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [user, setUser] = useState([]);
@@ -58,10 +64,18 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     await signOut(auth);
+    router.push("/");
   };
 
   const resetPassword = async (email) => {
     await sendPasswordResetEmail(auth, email);
+  };
+
+  const updateEmail = async (email) => {
+    return await _updateEmail(auth.currentUser, email);
+  };
+  const updatePassword = async (password) => {
+    return await _updatePassword(auth.currentUser, password);
   };
 
   const context = {
@@ -69,6 +83,8 @@ export const AuthProvider = ({ children }) => {
     signIn,
     logout,
     resetPassword,
+    updateEmail,
+    updatePassword,
     isInitialized,
     isAuthenticated,
     user,
