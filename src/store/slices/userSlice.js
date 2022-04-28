@@ -134,11 +134,21 @@ export const addFavorite = (payload) =>
     method: "updateArrayAdd",
     data: payload,
   });
+
 export const removeFavorite = (payload) =>
   actions.firestoreCallBegan({
     onStart: "user/dataUploadRequested",
     onSuccess: "user/favoriteDeleted",
     onError: actions.firestoreCallFailed.type,
     method: "updateArrayRemove",
+    data: payload,
+  });
+
+export const updateUserDetails = (payload) =>
+  actions.firestoreCallBegan({
+    onStart: "user/dataUploadRequested",
+    onSuccess: "user/userUpdated",
+    onError: actions.firestoreCallFailed.type,
+    method: "updateUser",
     data: payload,
   });
