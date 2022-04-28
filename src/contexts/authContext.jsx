@@ -8,6 +8,10 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 
+// Redux
+import { fetchId } from "../../src/store/slices/userSlice";
+import { useSelector, useDispatch } from "../../src/store/configureStore";
+
 export const AuthContext = createContext({
   user: null,
   isAuthenticated: false,
@@ -19,6 +23,7 @@ export const AuthContext = createContext({
 });
 
 export const AuthProvider = ({ children }) => {
+  const dispatch = useDispatch();
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [user, setUser] = useState([]);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -26,12 +31,14 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        dispatch(fetchId(user.uid));
         setIsAuthenticated(true);
         setUser(user);
         setIsInitialized(true);
       } else {
         setIsAuthenticated(false);
         setUser([]);
+        setIsInitialized(true);
       }
     });
   }, []);
@@ -41,7 +48,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signIn = async (email, password) => {
-    return await signInWithEmailAndPassword(auth, email, password);
+    try {
+      return await signInWithEmailAndPassword(auth, email, password);
+      setIsInitialized(false);
+    } catch (err) {
+      throw err;
+    }
   };
 
   const logout = async () => {

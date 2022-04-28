@@ -22,10 +22,11 @@ import { red } from "@mui/material/colors";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import { createUser } from "../../src/auth/authService";
 import { createUser as newUser } from "../../src/database/services/userService";
+import { useAuth } from "../../src/hooks/useAuth";
 
 const Register = () => {
+  const auth = useAuth();
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -48,7 +49,7 @@ const Register = () => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        const cred = await createUser(values.email, values.password);
+        const cred = await auth.createUser(values.email, values.password);
         const userUid = cred.user.uid;
 
         const payload = {
@@ -57,18 +58,15 @@ const Register = () => {
             lastName: values.lastName,
           },
         };
-
         await newUser(userUid, payload);
 
-        const returnUrl = router.query.returnUrl || "/";
+        const returnUrl = router.query.returnUrl || "/app";
         router.push(returnUrl).catch(console.error);
       } catch (err) {
         console.error(err);
-
         helpers.setStatus({ success: false });
         helpers.setErrors({ submit: err.message });
         helpers.setSubmitting(false);
-
         toast.error("An error occurred while registering you.");
       }
     },
@@ -99,7 +97,7 @@ const Register = () => {
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
           Sign up
         </Typography>
         <Box component="form" noValidate onSubmit={formik.handleSubmit}>

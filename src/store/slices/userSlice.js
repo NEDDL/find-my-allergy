@@ -5,7 +5,7 @@ import moment from "moment";
 const slice = createSlice({
   name: "user",
   initialState: {
-    userId: "xtFEjEyYNK1PlLJidBxA",
+    userId: "",
     user: {
       name: "",
       lastName: "",
@@ -18,13 +18,15 @@ const slice = createSlice({
     lastFetch: null,
   },
   reducers: {
+    idFetched: (state, action) => {
+      state.userId = action.payload;
+    },
     dataLoaded: (state, action) => {
-      state.userId = "xtFEjEyYNK1PlLJidBxA";
       state.user.name = action.payload.user.name;
       state.user.lastName = action.payload.user.lastName;
-      state.allergens = action.payload.allergens;
-      state.favorites = action.payload.favorites;
-      state.lastSearched = action.payload.lastSearched;
+      state.allergens = action.payload.allergens || [];
+      state.favorites = action.payload.favorites || [];
+      state.lastSearched = action.payload.lastSearched || [];
       state.loading = false;
       state.uploading = false;
       state.lastFetch = Date.now();
@@ -79,6 +81,7 @@ const slice = createSlice({
 });
 
 const {
+  idFetched,
   userUpdated,
   allergensUpdated,
   favoriteAdded,
@@ -87,6 +90,8 @@ const {
 } = slice.actions;
 
 export default slice.reducer;
+
+export const fetchId = (payload) => idFetched(payload);
 
 export const loadUser = () => (dispatch, getState) => {
   const { lastFetch } = getState().entities.user;
