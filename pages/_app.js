@@ -2,7 +2,7 @@
 import React, { Fragment } from "react";
 import { useRouter } from "next/router";
 
-import { Provider } from "react-redux";
+import { Provider as ReduxProvider } from "react-redux";
 import configureStore from "../src/store/configureStore";
 const store = configureStore();
 
@@ -12,7 +12,8 @@ import lightTheme from "../styles/theme/lightTheme";
 import baseOptions from "../styles/theme/baseOptions";
 
 import { Toaster } from "react-hot-toast";
-import { AuthProvider } from "../src/contexts/authContext";
+import { AuthProvider, AuthConsumer } from "../src/contexts/authContext";
+import SplashScreen from "../src/components/appComponents/splashScreen/splashScreen";
 
 const AppWrapper = () => {};
 
@@ -22,15 +23,23 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Fragment>
-      <Provider store={store}>
+      <ReduxProvider store={store}>
         <AuthProvider>
           <ThemeProvider theme={createTheme(baseOptions, lightTheme)}>
             <GlobalStyle />
             <Toaster />
-            {getLayout(<Component {...pageProps} key={router.asPath} />)}
+            <AuthConsumer>
+              {(auth) =>
+                !auth.isInitialized ? (
+                  <SplashScreen />
+                ) : (
+                  getLayout(<Component {...pageProps} key={router.asPath} />)
+                )
+              }
+            </AuthConsumer>
           </ThemeProvider>
         </AuthProvider>
-      </Provider>
+      </ReduxProvider>
     </Fragment>
   );
 }

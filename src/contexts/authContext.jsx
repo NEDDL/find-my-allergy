@@ -8,9 +8,10 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 
-const AuthContext = createContext({
+export const AuthContext = createContext({
   user: null,
   isAuthenticated: false,
+  isInitialized: false,
   signIn: () => {},
   logout: () => {},
   resetPassword: () => {},
@@ -20,12 +21,14 @@ const AuthContext = createContext({
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [user, setUser] = useState([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsAuthenticated(true);
         setUser(user);
+        setIsInitialized(true);
       } else {
         setIsAuthenticated(false);
         setUser([]);
@@ -54,6 +57,7 @@ export const AuthProvider = ({ children }) => {
     signIn,
     logout,
     resetPassword,
+    isInitialized,
     isAuthenticated,
     user,
   };
@@ -63,4 +67,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export default AuthContext;
+export const AuthConsumer = AuthContext.Consumer;

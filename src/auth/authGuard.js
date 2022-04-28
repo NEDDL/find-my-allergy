@@ -9,6 +9,7 @@ const AuthGuard = ({ children }) => {
 
   useEffect(() => {
     Guard();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, auth]);
 
   function Guard(children) {
