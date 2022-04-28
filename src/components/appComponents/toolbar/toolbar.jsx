@@ -35,7 +35,7 @@ const AppToolbar = () => {
       >
         Find my allergy
       </Typography>
-      <Button onClick={auth.logout} variant="contained">
+      <Button onClick={() => auth.logout()} variant="contained">
         Logout
       </Button>
     </Toolbar>
