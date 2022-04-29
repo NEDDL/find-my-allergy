@@ -215,6 +215,7 @@ const EmailAddress = () => {
                         <Button
                           type="submit"
                           key="submit"
+                          disabled={formik.isSubmitting}
                           variant="contained"
                           color="primary"
                           sx={{

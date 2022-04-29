@@ -27,22 +27,6 @@ const EmailAddress = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.user]);
 
-  // function equalTo(ref, msg) {
-  //   return this.test({
-  //     name: "equalTo",
-  //     exclusive: false,
-  //     message: msg || "Both values should match.",
-  //     params: {
-  //       reference: ref.path,
-  //     },
-  //     test: function (value) {
-  //       return value === this.resolve(ref);
-  //     },
-  //   });
-  // }
-
-  // Yup.addMethod(Yup.string, "equalTo", equalTo);
-
   const formik = useFormik({
     initialValues: {
       email: auth.user.email,
@@ -220,6 +204,7 @@ const EmailAddress = () => {
                         <Button
                           type="submit"
                           key="submit"
+                          disabled={formik.isSubmitting}
                           variant="contained"
                           color="primary"
                           sx={{
