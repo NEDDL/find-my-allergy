@@ -1,12 +1,16 @@
+// React, Next
 import React, { useState, useEffect } from "react";
-import AppLayout from "../../../src/components/appLayout";
+import Head from "next/head";
+
+// Auth
+import AuthGuard from "../../../src/auth/helpers/authGuard";
 
 // Redux
-
 import { addAllergens, loadUser } from "../../../src/store/slices/userSlice";
 import { useSelector, useDispatch } from "../../../src/store/configureStore";
 
 // Styling
+import AppLayout from "../../../src/components/appLayout";
 import { useTheme } from "@mui/material/styles";
 import { blueGrey, grey, green, red } from "@mui/material/colors";
 import {
@@ -25,8 +29,34 @@ import {
 } from "@mui/material";
 // Icons
 import InfoIcon from "@mui/icons-material/Info";
-import Head from "next/head";
-import AuthGuard from "../../../src/auth/authGuard";
+
+const Categories = [
+  "milk",
+  "gluten",
+  "soybeans",
+  "eggs",
+  "nuts",
+  "fish",
+  "celery",
+  "mustard",
+  "peanuts",
+  "sulphur dioxide and sulphites",
+  "sesame seeds",
+  "crustaceans",
+  "molluscs",
+  "lupin",
+];
+
+const ITEM_HEIGHT = 54;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 
 const Diet = () => {
   const theme = useTheme();
@@ -45,34 +75,6 @@ const Diet = () => {
     };
     userAllergens();
   }, [userData]);
-
-  const Categories = [
-    "milk",
-    "gluten",
-    "soybeans",
-    "eggs",
-    "nuts",
-    "fish",
-    "celery",
-    "mustard",
-    "peanuts",
-    "sulphur dioxide and sulphites",
-    "sesame seeds",
-    "crustaceans",
-    "molluscs",
-    "lupin",
-  ];
-
-  const ITEM_HEIGHT = 54;
-  const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
-    },
-  };
 
   const getStyles = (name, selectedAllergen, theme) => {
     return {

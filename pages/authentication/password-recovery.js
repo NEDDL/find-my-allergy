@@ -1,6 +1,13 @@
+// React, Next
 import React from "react";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
+
+// Auth
+import { useAuth } from "../../src/hooks/useAuth";
+import GuestGuard from "../../src/auth/helpers/guestGuard";
+
+// Styling
 import toast from "react-hot-toast";
 import {
   Container,
@@ -15,13 +22,12 @@ import {
   Link as MUILink,
   Checkbox,
 } from "@mui/material";
+// Icons
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
+// Form management
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
-import { useAuth } from "../../src/hooks/useAuth";
-import GuestGuard from "../../src/auth/guestGuard";
 
 const SignUp = () => {
   const auth = useAuth();

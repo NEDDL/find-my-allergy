@@ -1,7 +1,16 @@
+// React, next
 import React from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
+// Auth
+import { createUser as newUser } from "../../src/database/services/userService";
+import { useAuth } from "../../src/hooks/useAuth";
+import GuestGuard from "../../src/auth/helpers/guestGuard";
+
+// Styling
+import toast from "react-hot-toast";
+import { red } from "@mui/material/colors";
 import {
   Container,
   CssBaseline,
@@ -15,16 +24,12 @@ import {
   Link as MUILink,
   Checkbox,
 } from "@mui/material";
-import toast from "react-hot-toast";
+// Icons
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { red } from "@mui/material/colors";
 
+// Form management
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
-import { createUser as newUser } from "../../src/database/services/userService";
-import { useAuth } from "../../src/hooks/useAuth";
-import GuestGuard from "../../src/auth/guestGuard";
 
 const Register = () => {
   const auth = useAuth();

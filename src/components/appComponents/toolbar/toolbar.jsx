@@ -1,14 +1,22 @@
+// React, Next
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
+
+// Auth
+import { useAuth } from "../../../hooks/useAuth";
+
+// Styling
+import { blueGrey, grey } from "@mui/material/colors";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+} from "@mui/material";
+// Icons
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { blueGrey, grey } from "@mui/material/colors";
-import { useAuth } from "../../../hooks/useAuth";
 
 const AppToolbar = ({ showMenu, setShowMenu }) => {
   const auth = useAuth();

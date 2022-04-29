@@ -1,3 +1,4 @@
+// React, Next
 import React, {
   useState,
   useEffect,
@@ -5,9 +6,13 @@ import React, {
   useCallback,
   useRef,
 } from "react";
-import AppLayout from "../../../src/components/appLayout";
+import Head from "next/head";
 import axios from "axios";
 
+// Auth
+import AuthGuard from "../../../src/auth/helpers/authGuard";
+
+// Redux
 import {
   loadUser,
   addFavorite,
@@ -15,6 +20,8 @@ import {
 } from "../../../src/store/slices/userSlice";
 import { useSelector, useDispatch } from "../../../src/store/configureStore";
 
+// Styling
+import AppLayout from "../../../src/components/appLayout";
 import { blueGrey, grey, red } from "@mui/material/colors";
 import {
   Box,
@@ -34,11 +41,9 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material";
+// Icons
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import Head from "next/head";
-
-import AuthGuard from "../../../src/auth/authGuard";
 
 const Favorites = () => {
   const dispatch = useDispatch();

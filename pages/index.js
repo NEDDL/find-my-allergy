@@ -1,11 +1,19 @@
+// React, Next
 import React, { useEffect } from "react";
-
 import Head from "next/head";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import toast from "react-hot-toast";
 
+// Auth
+import { useAuth } from "../src/hooks/useAuth";
+import GuestGuard from "../src/auth/helpers/guestGuard";
+
+// Redux
+import { useSelector, useDispatch } from "../src/store/configureStore";
+
+// Styling
+import toast from "react-hot-toast";
 import {
   Avatar,
   Box,
@@ -20,15 +28,12 @@ import {
   Paper,
   FormHelperText,
 } from "@mui/material";
+// Icons
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
+// Form management
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
-import { useSelector, useDispatch } from "../src/store/configureStore";
-
-import { useAuth } from "../src/hooks/useAuth";
-import GuestGuard from "../src/auth/guestGuard";
 
 const Home = () => {
   const dispatch = useDispatch();

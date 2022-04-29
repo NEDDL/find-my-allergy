@@ -1,3 +1,4 @@
+// React, Next
 import React, {
   useState,
   useEffect,
@@ -5,20 +6,25 @@ import React, {
   useCallback,
   useRef,
 } from "react";
-import AppLayout from "../../../src/components/appLayout";
+import Head from "next/head";
 
+// Auth
+import { useAuth } from "../../../src/hooks/useAuth";
+import AuthGuard from "../../../src/auth/helpers/authGuard";
+
+// Redux
 import { loadUser } from "../../../src/store/slices/userSlice";
 import { useSelector, useDispatch } from "../../../src/store/configureStore";
 
+// Styling
+import AppLayout from "../../../src/components/appLayout";
 import { blueGrey, grey, red } from "@mui/material/colors";
 import { Box, Container, Typography } from "@mui/material";
+
+// Components
 import UserDetails from "../../../src/components/appComponents/settings/userDetails";
 import EmailAddress from "../../../src/components/appComponents/settings/emailAddress";
 import Password from "../../../src/components/appComponents/settings/password";
-import Head from "next/head";
-
-import { useAuth } from "../../../src/hooks/useAuth";
-import AuthGuard from "../../../src/auth/authGuard";
 
 const Settings = () => {
   const dispatch = useDispatch();

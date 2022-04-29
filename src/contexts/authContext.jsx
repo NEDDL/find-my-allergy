@@ -1,5 +1,8 @@
+// React, Next
 import { useState, useEffect, createContext } from "react";
 import { useRouter } from "next/router";
+
+// Auth
 import auth from "../auth/configureAuth";
 import {
   createUserWithEmailAndPassword,

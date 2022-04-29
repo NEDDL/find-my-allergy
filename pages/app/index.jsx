@@ -1,8 +1,11 @@
+// React, Next
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import AppLayout from "../../src/components/appLayout";
+import Head from "next/head";
 import axios from "axios";
-import toast from "react-hot-toast";
+
+// Auth
+import AuthGuard from "../../src/auth/helpers/authGuard";
 
 // Redux
 import {
@@ -14,6 +17,8 @@ import {
 import { useSelector, useDispatch } from "../../src/store/configureStore";
 
 // Styling
+import toast from "react-hot-toast";
+import AppLayout from "../../src/components/appLayout";
 import { blueGrey, grey, green, orange, red } from "@mui/material/colors";
 import {
   Box,
@@ -33,8 +38,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import InfoIcon from "@mui/icons-material/Info";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import Head from "next/head";
-import AuthGuard from "../../src/auth/authGuard";
 
 const Search = () => {
   const router = useRouter();
@@ -69,6 +72,30 @@ const Search = () => {
 
   const handleChange = (e) => {
     setCode(e.target.value.replace(/\D/, ""));
+  };
+
+  const handleSearch = async () => {
+    if (result.productId === code) {
+      toast(
+        "You are trying to search for the same product. Please change the code to be able to start a new search."
+      );
+    } else {
+      setLoading(true);
+      setDisabled(true);
+      await apiCall(code);
+      setLoading(false);
+      setDisabled(false);
+    }
+  };
+
+  const handleFavorite = () => {
+    if (userData.favorites.includes(result.productId)) {
+      dispatch(removeFavorite({ favorites: result.productId }));
+      setFav(false);
+    } else {
+      dispatch(addFavorite({ favorites: result.productId }));
+      setFav(true);
+    }
   };
 
   const apiCall = async (searchQuery) => {
@@ -129,30 +156,6 @@ const Search = () => {
         );
         console.log(err);
       });
-  };
-
-  const handleSearch = async () => {
-    if (result.productId === code) {
-      toast(
-        "You are trying to search for the same product. Please change the code to be able to start a new search."
-      );
-    } else {
-      setLoading(true);
-      setDisabled(true);
-      await apiCall(code);
-      setLoading(false);
-      setDisabled(false);
-    }
-  };
-
-  const handleFavorite = () => {
-    if (userData.favorites.includes(result.productId)) {
-      dispatch(removeFavorite({ favorites: result.productId }));
-      setFav(false);
-    } else {
-      dispatch(addFavorite({ favorites: result.productId }));
-      setFav(true);
-    }
   };
 
   return (

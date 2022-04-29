@@ -1,5 +1,4 @@
 import db from "../configureFirestore";
-
 import {
   collection,
   getDocs,

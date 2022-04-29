@@ -1,6 +1,10 @@
+// React, Next
 import React, { useState } from "react";
-import { Box } from "@mui/material";
-import MuiAppBar from "@mui/material/AppBar";
+
+// Styling
+import { Box, AppBar as MuiAppBar } from "@mui/material";
+
+// Components
 import SidebarMenu from "./appComponents/sideMenu/sideMenu";
 import AppToolbar from "./appComponents/toolbar/toolbar";
 import { styled, useTheme } from "@mui/material/styles";

@@ -1,11 +1,16 @@
+// React, Next
 import React, { useState, useEffect } from "react";
 
-import { blueGrey, grey, red } from "@mui/material/colors";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-
+// Redux
 import { updateUserDetails } from "../../../store/slices/userSlice";
 import { useSelector, useDispatch } from "../../../store/configureStore";
 
+// Styling
+import toast from "react-hot-toast";
+import { blueGrey, grey, red } from "@mui/material/colors";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+
+// Form management
 import { useFormik } from "formik";
 import * as Yup from "yup";
 

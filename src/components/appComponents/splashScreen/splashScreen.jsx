@@ -1,7 +1,9 @@
-import { CircularProgress } from "@mui/material";
-import { blueGrey } from "@mui/material/colors";
-import { Box } from "@mui/system";
+// React, Next
 import React from "react";
+
+// Styling
+import { CircularProgress, Box } from "@mui/material";
+import { blueGrey } from "@mui/material/colors";
 
 const SplashScreen = () => {
   return (
