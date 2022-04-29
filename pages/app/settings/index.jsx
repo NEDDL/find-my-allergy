@@ -1,24 +1,17 @@
 // React, Next
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-  useRef,
-} from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 
 // Auth
-import { useAuth } from "../../../src/hooks/useAuth";
 import AuthGuard from "../../../src/auth/helpers/authGuard";
 
 // Redux
 import { loadUser } from "../../../src/store/slices/userSlice";
-import { useSelector, useDispatch } from "../../../src/store/configureStore";
+import { useDispatch } from "../../../src/store/configureStore";
 
 // Styling
 import AppLayout from "../../../src/components/appLayout";
-import { blueGrey, grey, red } from "@mui/material/colors";
+
 import { Box, Container, Typography } from "@mui/material";
 
 // Components
@@ -28,8 +21,6 @@ import Password from "../../../src/components/appComponents/settings/password";
 
 const Settings = () => {
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.entities.user);
-  const auth = useAuth();
 
   useEffect(() => {
     dispatch(loadUser());

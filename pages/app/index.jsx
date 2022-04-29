@@ -1,6 +1,5 @@
 // React, Next
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import axios from "axios";
 
@@ -19,18 +18,15 @@ import { useSelector, useDispatch } from "../../src/store/configureStore";
 // Styling
 import toast from "react-hot-toast";
 import AppLayout from "../../src/components/appLayout";
-import { blueGrey, grey, green, orange, red } from "@mui/material/colors";
+
 import {
   Box,
   Button,
-  Chip,
   CircularProgress,
   Container,
   Grid,
   Input,
-  Stack,
   Typography,
-  Link,
 } from "@mui/material";
 // Icons
 import QrCodeIcon from "@mui/icons-material/QrCode";
@@ -38,19 +34,15 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 // Form management
 import { useFormik } from "formik";
-import * as Yup from "yup";
 
 // Components
 import { Disclaimer } from "../../src/components/appComponents/disclaimer/disclaimer";
 import { ProductPresenter } from "../../src/components/appComponents/productPresenter/productPresenter";
 
 const Search = () => {
-  const router = useRouter();
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.entities.user);
   const allergicList = userData.allergens;
-  const lastSearched = userData.lastSearched;
-  const [code, setCode] = useState("");
   const [fav, setFav] = useState(false);
   const [result, setResult] = useState({
     productId: "",

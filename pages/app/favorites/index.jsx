@@ -1,11 +1,5 @@
 // React, Next
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-  useRef,
-} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import axios from "axios";
 
@@ -22,35 +16,15 @@ import { useSelector, useDispatch } from "../../../src/store/configureStore";
 
 // Styling
 import AppLayout from "../../../src/components/appLayout";
-import { blueGrey, grey, red } from "@mui/material/colors";
-import {
-  Box,
-  Button,
-  Chip,
-  CircularProgress,
-  Container,
-  Grid,
-  Input,
-  Stack,
-  Typography,
-  Link,
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-} from "@mui/material";
-// Icons
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Box, Container, Typography } from "@mui/material";
+
+// Components
 import { ProductTable } from "../../../src/components/appComponents/productTable/productTable";
 
 const Favorites = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.entities.user);
   const allergicList = userData.allergens;
-  const [fav, setFav] = useState(false);
   const [result, setResult] = useState([]);
   const products = useRef([]);
 

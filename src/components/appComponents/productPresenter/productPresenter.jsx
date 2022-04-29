@@ -3,18 +3,7 @@ import React from "react";
 
 // Styling
 import { blueGrey, grey, green, orange, red } from "@mui/material/colors";
-import {
-  Box,
-  Button,
-  Chip,
-  CircularProgress,
-  Container,
-  Grid,
-  Input,
-  Stack,
-  Typography,
-  Link,
-} from "@mui/material";
+import { Box, Chip, Stack, Typography } from "@mui/material";
 // Icons
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
