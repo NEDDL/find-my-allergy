@@ -266,6 +266,25 @@ const Favorites = () => {
                 })}
               </TableBody>
             </Table>
+
+            {result.length == 0 && (
+              <Box
+                sx={{
+                  display: "flex",
+                  width: "100%",
+                  px: 2,
+                  py: 4,
+                }}
+              >
+                <Typography
+                  variant="subtitle2"
+                  sx={{ alignText: "center", mx: "auto" }}
+                >
+                  Please add some items in your list to be able to view them
+                  later.
+                </Typography>
+              </Box>
+            )}
           </TableContainer>
         </Box>
       </Container>
