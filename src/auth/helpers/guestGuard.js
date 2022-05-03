@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 // Auth
-import { useAuth } from "../hooks/useAuth";
-import SplashScreen from "../components/appComponents/splashScreen/splashScreen";
+import { useAuth } from "../../hooks/useAuth";
+import SplashScreen from "../../components/appComponents/splashScreen/splashScreen";
 
 const GuestGuard = ({ children }) => {
   const auth = useAuth();
