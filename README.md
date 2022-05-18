@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Find my allergy app
 
-## Getting Started
+Find my allergy is an application to find the allergens of the packaged foods based on the user's selection.
 
-First, run the development server:
+See live at: https://find-my-allergy.vercel.app/app
 
-```bash
-npm run dev
-# or
-yarn dev
+## Intention & Usage
+
+To use this application:
+
+- Create an account.
+- Select your allergens
+- Search a barcode of a product to see the insights
+
+> This app is built as a part of portfolio. You can visit the live version of this app from the live link above.
+
+## Major dependencies
+
+This app demonstrates the usage of following dependencies in a [React.Js](https://reactjs.org/) app.
+
+```json
+    "react": "18.0.0",
+    "next": "12.1.5",
+
+    "react-redux": "^8.0.0",
+    "@reduxjs/toolkit": "^1.8.1",
+
+    "@mui/material": "^5.6.1",
+    "styled-components": "^5.3.5",
+
+    "axios": "^0.26.1",
+    "firebase": "^9.6.11",
+
+    "formik": "^2.2.9",
+    "yup": "^0.32.11"
+
+    "moment": "^2.29.3",
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 2. Contributing
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Please make sure to update tests as appropriate.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 3. License
 
-## Learn More
+[MIT](https://choosealicense.com/licenses/mit/)
 
-To learn more about Next.js, take a look at the following resources:
+You can clone this repository to build your own.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to ask questions about this app with my [email address](mailto:mustafasaitonal@outlook.com)
